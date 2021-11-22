@@ -1,6 +1,7 @@
 <template>
   <div
     class="
+      bg-gray-200
       my-0
       mx-auto
       min-h-screen
@@ -17,7 +18,28 @@
         Temaru Educational Platform
       </h2>
       <div class="links">
-        <router-link to="/login" class="button--green"> Login </router-link>
+        <router-link to="/login" class="">
+          <button
+            class="
+              px-4
+              py-2
+              rounded-md
+              text-sm
+              font-medium
+              border
+              focus:outline-none focus:ring
+              transition
+              text-green-600
+              border-green-600
+              hover:text-white hover:bg-green-600
+              active:bg-green-700
+              focus:ring-green-300
+            "
+            type="submit"
+          >
+            Login
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
