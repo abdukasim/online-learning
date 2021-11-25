@@ -3,7 +3,11 @@
     <div class="grid md:grid-cols-7 gap-4 mt-4 pb-4">
       <!-- Logo and Mobile Menu Button -->
       <div class="flex">
-        <div class="md:hidden flex items-center">
+        <div
+          class="md:hidden flex items-center"
+          :class_x="{ active: isBurgerActive }"
+          @click.prevent="toggle"
+        >
           <button class="pl-4 outline-none mobile-menu-button">
             <svg
               class="w-6 h-6 text-gray-500 hover:text-green-500"
@@ -255,9 +259,12 @@
 
 <script>
 import uploadModal from "@/components/uploadModal.vue";
+// import { state, mutations } from "../store";
 export default {
   components: { uploadModal },
-  props: ["teacher"],
+  props: {
+    teacher: Boolean,
+  },
   data: () => ({
     settingDown: false,
     notificationDown: false,
@@ -270,6 +277,9 @@ export default {
     isTeacher() {
       return this.teacher;
     },
+    // isBurgerActive() {
+    //   return state.isSidebarOpen;
+    // },
   },
 
   methods: {
@@ -280,6 +290,9 @@ export default {
     chat() {
       console.log("chat");
     },
+    // toggle() {
+    //   mutations.toggleSidebar();
+    // },
   },
 };
 </script>
