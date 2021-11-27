@@ -5,7 +5,7 @@
       <div class="flex">
         <div
           class="md:hidden flex items-center"
-          :class_x="{ active: isBurgerActive }"
+          :class="{ active: isBurgerActive }"
           @click.prevent="toggle"
         >
           <button class="pl-4 outline-none mobile-menu-button">
@@ -277,9 +277,9 @@ export default {
     isTeacher() {
       return this.teacher;
     },
-    // isBurgerActive() {
-    //   return state.isSidebarOpen;
-    // },
+    isBurgerActive() {
+      return this.$store.state.isSidebarOpen;
+    },
   },
 
   methods: {
@@ -290,9 +290,14 @@ export default {
     chat() {
       console.log("chat");
     },
-    // toggle() {
-    //   mutations.toggleSidebar();
-    // },
+    toggle() {
+      this.$store.commit("toggleSidebar");
+    },
+  },
+  created() {
+    if (window.innerWidth > 768) {
+      this.$store.state.isSidebarOpen = true;
+    }
   },
 };
 </script>

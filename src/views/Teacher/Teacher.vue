@@ -28,7 +28,7 @@ export default {
       { name: "Students", icon: "bx bx-user-plus", route: "/students" },
       { name: "Messages", icon: "bx bx-message-dots", route: "/messages" },
     ],
-    icon: "inline-flex                  items-center                  justify-center h-12                  w-12                  text-lg text-gray-400;",
+    icon: "inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400;",
   }),
 };
 </script>
