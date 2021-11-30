@@ -6,7 +6,7 @@
         <li v-for="listItem in listItems" :key="listItem.name">
           <router-link :to="listItem.route" class="a-style">
             <span :class="icon"><i :class="listItem.icon"></i></span>
-            <span class="text-sm font-medium"> {{ listItem.name }} </span>
+            <span class="text-md font-normal"> {{ listItem.name }} </span>
           </router-link>
         </li>
       </Sidebar>

@@ -1,7 +1,7 @@
 <template>
   <transition name="slide">
     <div
-      class="sidebar w-min shadow-xl md:shadow-none"
+      class="sidebar w-screen md:w-min shadow-xl bg-white z-10 md:shadow-none"
       @click="closeSidebarPanel"
       v-if="isPanelOpen"
     >
