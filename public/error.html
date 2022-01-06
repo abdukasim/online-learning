@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        @font-face {
+            font-family: Choco;
+            src: url(/fonts/Chococooky.ttf);
+        }
+        body {
+            font-family: Choco;
+        }
+        .wrapper {
+            margin: auto;
+            padding-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .text {
+            margin: 15px 0;
+        }
+        h1 {
+            text-align: center;
+            font-size: 18px;
+            font-weight: normal;
+            margin: 4px auto;
+            color: #333c;
+        }
+        button {
+            background: transparent;
+            border: 1px solid;
+            border-radius: 25px;
+            color: rgb(0, 140, 255);
+            font-size: 14px;
+            font-weight: normal;
+            padding: 8px;
+            width: 80px;
+            cursor: pointer;
+            outline: none;
+        }
+        button:hover {
+            background:rgb(0, 140, 255);
+            color: white;
+        }
+        img {
+            max-width: 200px;
+        }
+        @media screen and (min-width: 750px) {
+            img {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <img src="/imgs/not found.png">
+
+        <div class="text">
+            <h1>Something went wrong</h1>
+            <h1>Please try again</h1>
+        </div>
+        
+        <button onclick="location.reload()">Retry</button>
+    </div>
+    
+</body>
+</html>
