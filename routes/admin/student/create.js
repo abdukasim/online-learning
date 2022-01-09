@@ -16,14 +16,17 @@ module.exports = async (req, res) => {
       let stud = new Student(student, sec)
 
       // add student to db --> add student to selected grade
-      if ((await createUser(stud)) && (await tetherStudent(stud))) res.status(200).json({
+      if ((await createUser(stud)) && (await tetherStudent({
+        username: stud.login.username,
+        level: stud.level,
+        section: stud.section
+      }))) res.status(200).json({
         success: true,
         student: stud
       })
     } else throw '406'
   } catch(e) {
     console.log(e)
-    if (isNaN(e)) res.sendStatus(500)
-    else res.sendStatus(e)
+    res.sendStatus(isNaN(e) ? 500 : Number(e))
   }
 }

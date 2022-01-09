@@ -11,7 +11,6 @@ module.exports = async (req, res) => {
 		else res.status(200).json({ success: true })
 	} catch (e) {
 		console.log(e)
-		if (isNaN(e)) res.sendStatus(500)
-		else res.sendStatus(Number(e))
+		res.sendStatus(isNaN(e) ? 500 : Number(e))
 	}
 }

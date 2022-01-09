@@ -4,11 +4,12 @@ module.exports = async (level, section) => {
   try {
     let grade = (await findLevel({ level }))[0]
     let pass = false
-    
-    grade.sections.every(sec => {
-      pass = sec.index.toUpperCase() === section.toUpperCase()
-      return !pass
-    })
+
+    if (section)
+      grade.sections.every(sec => {
+        pass = sec.index.toUpperCase() === section.toUpperCase()
+        return !pass
+      })
 
     return { lev: true, sec: pass }
   } catch(e) {

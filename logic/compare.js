@@ -1,0 +1,1 @@
+module.exports = (prev, next) => (prev ? prev : next)

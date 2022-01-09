@@ -1,14 +1,19 @@
 const { findLevel, editLevel } = require("../../database/level-actions")
 
-module.exports = async student => {
+/**
+ * Adds a student to grade
+ * @param {Object} data { username, level, section }
+ * @returns Boolean
+ */
+module.exports = async data => {
   try {
-    let { username } = student.login
-    let grade = (await findLevel({ level: student.level }))[0]
+    let { username, section, level } = data
+    let grade = (await findLevel({ level }))[0]
     let tethered = false
     
-    if (student.section)
+    if (section)
       grade.sections.every(sec => {
-        if (sec.index.toUpperCase() === student.section.toUpperCase()) {
+        if (sec.index.toUpperCase() === section.toUpperCase()) {
           sec.students.push({ username })
           tethered = true
         }
