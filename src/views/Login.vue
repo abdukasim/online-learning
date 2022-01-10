@@ -72,17 +72,18 @@
           key="submit"
           style="--delay: 3; min-height: 28px"
           :disabled="loading"
-          @:click="login"
+          @click="login"
           class="
             bg-blue-400
             w-full
             mb-16
             transform
-            hover:translate-y-1
+            hover:-translate-y-1
+            focus:translate-y-1
             transition-transform
             ease-in
             duration-200
-            shadow-lg
+            shadow-xl
             text-white
             mt-10
             rounded-sm
@@ -104,6 +105,7 @@
 
 <script>
 import axios from "axios";
+import { mapGetters } from "vuex";
 
 export default {
   data: () => ({
@@ -113,14 +115,26 @@ export default {
     loginForm: {},
   }),
 
+  computed: {
+    ...mapGetters(["api"]),
+  },
+
   methods: {
     login() {
+      console.log("lol");
       axios
-        .post("http://192.168.239.172/session/login", {
+        .post(this.api("session/login"), {
           username: this.username,
           password: this.password,
         })
-        .then((res) => this.loginSuccess(res))
+        .then((res) => {
+          if (res.data.success) {
+            localStorage.schoolData = JSON.stringify(res.data.data.session);
+            location.assign(`${location.origin}/${res.data.data.redirect}/`);
+          } else {
+            // cannot login
+          }
+        })
         .catch((err) => {
           console.log(err);
         });
