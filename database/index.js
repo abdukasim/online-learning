@@ -33,6 +33,9 @@ module.exports = async () => {
 					login: {
 						username: 'admin',
 						password: 'admin',
+						sessions: [
+							{ session: 'admin', active: true }
+						],
 					},
 					type: 'ADMIN'
 				}

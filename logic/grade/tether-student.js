@@ -1,14 +1,16 @@
-const { findLevel, editLevel } = require("../../database/level-actions")
+const { findByLevel, editByLevel } = require("../../database/level-actions")
 
 /**
  * Adds a student to grade
  * @param {Object} data { username, level, section }
  * @returns Boolean
  */
-module.exports = async data => {
+module.exports = async student => {
   try {
-    let { username, section, level } = data
-    let grade = (await findLevel({ level }))[0]
+    let { username } = student.login
+    let { section, level } = student
+    
+    let grade = (await findByLevel(level))[0]
     let tethered = false
     
     if (section)
@@ -21,12 +23,10 @@ module.exports = async data => {
       })
     else grade.untethered.push({ username })
     
-    await editLevel({
-      filter: { level: grade.level },
+    return await editByLevel({
+      level: grade.level,
       item: grade
     })
-    
-    return true
   } catch(e) {
     console.log(e)
     return false

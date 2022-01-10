@@ -2,7 +2,7 @@ const { findUser } = require("../../../database/user-actions")
 
 module.exports = async (req, res) => {
   try {
-    let filter = { type: 'STUDENT' }
+    let filter = { type: 'TEACHER' }
 
     try {
       Object.entries(req.body.filter).forEach(item => filter[item[0]] = item[1])
@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
 
     res.json({
       success: true,
-      students: await findUser(filter)
+      teachers: await findUser(filter)
     })
   } catch(e) {
     console.log(e)

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { find, edit, create, remove } = require("./actions")
+const { create, find, edit, remove, createIfNotExist } = require("./actions")
 
 async function findUser(filter) {
 	return await find({
@@ -12,6 +12,13 @@ async function createUser(item) {
 	return await create({
 		model: mongoose.models['User'],
 		item
+	})
+}
+
+async function createUserIfNotExist(filter, item) {
+	return await createIfNotExist({
+		model: mongoose.models['User'],
+		filter, item
 	})
 }
 
@@ -34,6 +41,12 @@ module.exports = {
 	findByUsername: async username => (await findUser({ 'login.username': username })),
 
 	createUser: async item => (await createUser(item)),
+	createUserIfNotExist: async (filter, item) => {
+		filter = (typeof filter === 'string') ? {
+			'login.username': filter
+		} : filter
+		return await createUserIfNotExist(filter, item)
+	},
 
 	editUser: async data => (await editUser(data.filter, data.item)),
 	editByUsername: async data => (await editUser({ 'login.username': data.username }, data.item)),

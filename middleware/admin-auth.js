@@ -1,4 +1,4 @@
-const validateRequest = require("../logic/validate-request")
+const validateRequest = require("./resource/validate-request")
 
 const access = 'ADMIN'
 

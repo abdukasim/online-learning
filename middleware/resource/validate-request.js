@@ -1,6 +1,6 @@
-const validateSession = require('./validate-session')
+const validateSession = require('../../logic/validate-session')
 const permission = require('./permission')
-const { findByUsername } = require('../database/user-actions')
+const { findByUsername } = require('../../database/user-actions')
 
 module.exports = async data => {
   try {

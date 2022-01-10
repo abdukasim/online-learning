@@ -1,4 +1,4 @@
-const { createUser } = require("../../../database/user-actions")
+const { createUser, createUserIfNotExist } = require("../../../database/user-actions")
 const levelValidation = require("../../../logic/grade/level-validation")
 const tetherStudent = require("../../../logic/grade/tether-student")
 const Student = require("../../../logic/user/Student")
@@ -16,14 +16,12 @@ module.exports = async (req, res) => {
       let stud = new Student(student, sec)
 
       // add student to db --> add student to selected grade
-      if ((await createUser(stud)) && (await tetherStudent({
-        username: stud.login.username,
-        level: stud.level,
-        section: stud.section
-      }))) res.status(200).json({
-        success: true,
-        student: stud
-      })
+      if ((await createUserIfNotExist(username, stud)) && (await tetherStudent(stud)))
+        res.status(200).json({
+          success: true,
+          student: stud
+        })
+      else throw '500'
     } else throw '406'
   } catch(e) {
     console.log(e)

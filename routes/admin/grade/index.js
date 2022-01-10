@@ -2,12 +2,12 @@ const express = require('express')
 const router = express.Router()
 
 const get = require('./get')
-const create = require('./create')
+// const create = require('./create')
 // const edit = require('./edit')
 // const remove = require('./delete')
 
 router.get('/', get)
-router.post('/', create)
+// router.post('/', create)
 // router.put('/', edit)
 // router.delete('/', remove)
 

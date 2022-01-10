@@ -1,8 +1,8 @@
-const { findLevel } = require('../../database/level-actions')
+const { findByLevel } = require('../../database/level-actions')
 
 module.exports = async (level, section) => {
   try {
-    let grade = (await findLevel({ level }))[0]
+    let grade = (await findByLevel(level))[0]
     let pass = false
 
     if (section)
@@ -12,7 +12,7 @@ module.exports = async (level, section) => {
       })
 
     return { lev: true, sec: pass }
-  } catch(e) {
+  } catch (e) {
     return { lev: false, sec: false }
   }
 }
