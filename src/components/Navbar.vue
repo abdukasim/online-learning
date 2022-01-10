@@ -122,11 +122,11 @@
                 z-20
               "
             >
-              <a href="#" class="dropdownMenuItems"> your profile </a>
-              <a href="#" class="dropdownMenuItems"> Your projects </a>
-              <a href="#" class="dropdownMenuItems"> Help </a>
-              <a href="#" class="dropdownMenuItems"> Settings </a>
-              <a href="#" class="dropdownMenuItems"> Sign Out </a>
+              <a href="#" :class="dropdownMenuItems"> your profile </a>
+              <a href="#" :class="dropdownMenuItems"> Your projects </a>
+              <a href="#" :class="dropdownMenuItems"> Help </a>
+              <a href="#" :class="dropdownMenuItems"> Settings </a>
+              <a href="#" :class="dropdownMenuItems"> Sign Out </a>
             </div>
           </div>
 
@@ -271,6 +271,8 @@ export default {
     showModal: false,
     chatIcon: "bx bx-chat",
     uploadIcon: "bx bx-upload",
+    dropdownMenuItems:
+      "block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white;",
   }),
 
   computed: {
@@ -302,14 +304,4 @@ export default {
 };
 </script>
 
-<style>
-.dropdownMenuItems {
-  @apply block
-                  px-4
-                  py-2
-                  text-sm
-                  capitalize
-                  text-gray-700
-                  hover:bg-blue-500 hover:text-white;
-}
-</style>
+<style></style>

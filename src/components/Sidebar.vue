@@ -1,7 +1,16 @@
 <template>
   <transition name="slide">
     <div
-      class="sidebar w-screen md:w-min shadow-xl bg-white z-10 md:shadow-none"
+      class="
+        sidebar
+        w-screen
+        md:w-min
+        shadow-xl
+        bg-white
+        md:bg-transparent
+        z-10
+        md:shadow-none
+      "
       @click="closeSidebarPanel"
       v-if="isPanelOpen"
     >
