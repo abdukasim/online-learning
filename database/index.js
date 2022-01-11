@@ -1,7 +1,6 @@
 const mongoose = require("mongoose")
 const { model, Schema } = require("mongoose")
-const Grade = require("../logic/grade/Grade")
-const { createIfNotExist } = require("./actions")
+const devMode = require("../config/dev-mode")
 const schemes = require('./raw-schemes')
 
 const database = 'school'
@@ -22,36 +21,8 @@ module.exports = async () => {
 				model(item[0], new Schema(item[1], { strict: false }))
 			})
 
-			// create admin user
-			let admin = {
-				model: mongoose.models['User'],
-				filter: { 'login.username': 'admin' },
-				item: {
-					personal: {
-						name: { first: 'Admin', last: 'Admin', }
-					},
-					login: {
-						username: 'admin',
-						password: 'admin',
-						sessions: [
-							{ session: 'admin', active: true }
-						],
-					},
-					type: 'ADMIN'
-				}
-			}
-			if (await createIfNotExist(admin)) console.log('admin created')
 			
-			// create grade 1 with 2 sections --- for testing purposes
-			let grade = {
-				model: mongoose.models['Grade'],
-				filter: { level: 1 },
-				item: new Grade({
-					level: 1,
-					sections: 2
-				})
-			}
-			if (await createIfNotExist(grade)) console.log('grade 1[2] created')
+			devMode()
 
 
 			resolve('connected to database')

@@ -17,4 +17,26 @@ module.exports = {
     type: String,
     uppercase: true
   }, // identifies user type
+
+  // for student
+  level: String,
+  section: {
+    type: String,
+    uppercase: true
+  },
+  
+  // for teachers
+  courses: [
+    {
+      code: {
+        type: String,
+        uppercase: true
+      },
+      level: String,
+      section: {
+        type: String,
+        uppercase: true
+      }
+    }
+  ],
 } // User

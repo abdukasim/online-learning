@@ -1,8 +1,9 @@
 const Grade = require('./schemes/grade')
 const User = require('./schemes/user')
+const Course = require('./schemes/course')
 
 module.exports = {
-	Grade, User,
+	Grade, User, Course,
 
 	'Permissions': {
 		id: String, // user ID
@@ -10,18 +11,6 @@ module.exports = {
 			type: String,
 			uppercase: true,
 		}, // permission level
-	},
-
-	'Courses': {
-		code: {
-			type: String,
-			uppercase: true,
-		},
-		level: String,
-		section: {
-			type: String,
-			uppercase: true
-		}
 	},
 
 	'Files': {

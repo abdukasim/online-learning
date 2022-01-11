@@ -41,9 +41,8 @@ module.exports = {
 	findByLevel: async level => (await findLevel({ level })),
 
 	createLevel: async item => (await createLevel(item)),
-	createLevelIfNotExist: async data => (await createLevelIfNotExist(data.filter, data.item)),
 	createLevelIfNotExist: async (filter, item) => {
-		filter = (typeof filter === 'string') ? {
+		filter = (typeof filter !== 'object') ? {
 			level: filter
 		} : filter
 		return await createLevelIfNotExist(filter, item)
