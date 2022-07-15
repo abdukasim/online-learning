@@ -1,4 +1,5 @@
-# client
+# Discription
+This is a demo app for an online-learning system for schools where teachers can upload learning materials and assignments, and students can learn using the content uploaded by the teachers.
 
 ## Project setup
 ```
